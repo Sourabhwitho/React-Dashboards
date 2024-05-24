@@ -57,7 +57,7 @@ const Sidebar = ()=> {
                     <span className="arrow"><IoIosArrowForward/></span>
                     </Button>
                         <ul className={`submenuwrapper${map2.get(1) ? 'colapse':'colapsed'}`}>
-                        <li><Link to='/new-job'>New Job</Link></li>
+                        <li><Link to='/new-job' onClick={()=>context.setistogglesidebar(!context.istogglesidebar)}>New Job</Link></li>
                         <li><Link to=''>Open Job</Link></li>
                         <li><Link to=''>Open Recent Job</Link></li>
                         <li><Link to=''>Save Job</Link></li>

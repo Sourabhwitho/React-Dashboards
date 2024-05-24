@@ -14,7 +14,7 @@ const Header = ()=> {
             <div className="row d-flex align items-center">
                 {}
                 <div className="col-sm-4 part1">
-                    <Link to ={'/'} className="d-flex align-items-center logo">
+                    <Link to ={'/'}  className="d-flex align-items-center logo">
                         <img src={logo} width= {200} height={75}/>
                     </Link>
                 </div>
