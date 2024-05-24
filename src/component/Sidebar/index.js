@@ -6,7 +6,8 @@ import { FaRuler } from "react-icons/fa6";
 import { FaRegWindowRestore } from "react-icons/fa6";
 import { IoIosHelpCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { mycontext } from "../../App";
 
 var map1 = new Map([[1,false],[2,false],[3,false],[4,false],[5,false],[0,false]]);
 var map = new Map([[1,false],[2,false],[3,false],[4,false],[5,false],[0,false]]);
@@ -21,6 +22,8 @@ function updateMap(originalMap, keyToUpdate, newValue) {
   }
 
 const Sidebar = ()=> {
+
+    const context= useContext(mycontext);
 
     var [activetab, setactivetab]=useState(0);
     var [toggle, setistoggle]=useState(false);
@@ -48,29 +51,13 @@ const Sidebar = ()=> {
                     Dashboard
                     </Button>
                     </li>
-                <li><Button onClick={()=>isopensubmenu(1)} className={`w-100 ${activetab===1 ? 'active' : ''}`}>
+                <li><Button  className={`w-100 ${activetab===1 ? 'active' : ''}`}onClick={()=>isopensubmenu(1)}>
                     <span className="icon"><FaFileAlt/></span>
                     File
                     <span className="arrow"><IoIosArrowForward/></span>
                     </Button>
-                    <ul className={`submenuwrapper${map2.get(1) ? 'colapse':'colapsed'}`}>
-                        <li><Link to=''>New Job</Link></li>
-                        <li><Link to=''>Open Job</Link></li>
-                        <li><Link to=''>Open Recent Job</Link></li>
-                        <li><Link to=''>Save Job</Link></li>
-                        <li><Link to=''>Save Job as</Link></li>
-                        <li><Link to=''>Save Configuration</Link></li>
-                        <li><Link to=''>Import Board</Link></li>
-                        <li><Link to=''>Exit</Link></li>
-                    </ul>
-                    </li>
-                    <li><Button  className = {`w-100 ${activetab===2 ? 'active' : ''}`} onClick={()=>isopensubmenu(2)} >
-                    <span className="icon"><FaPlay/></span>
-                    Job
-                    <span className="arrow"><IoIosArrowForward/></span>
-                    </Button>
-                    <ul className={`submenuwrapper${map2.get(2) ? 'colapse':'colapsed'}`}>
-                        <li><Link to=''>New Job</Link></li>
+                        <ul className={`submenuwrapper${map2.get(1) ? 'colapse':'colapsed'}`}>
+                        <li><Link to='/new-job'>New Job</Link></li>
                         <li><Link to=''>Open Job</Link></li>
                         <li><Link to=''>Open Recent Job</Link></li>
                         <li><Link to=''>Save Job</Link></li>
@@ -92,36 +79,22 @@ const Sidebar = ()=> {
                         <li><Link to=''>Exit</Link></li>
                     </ul>
                     </li>
+                    <li><Button  className = {`w-100 ${activetab===2 ? 'active' : ''}`} onClick={()=>isopensubmenu(2)} >
+                    <span className="icon"><FaPlay/></span>
+                    Job
+                    <span className="arrow"><IoIosArrowForward/></span>
+                    </Button>
+                    </li>
                     <li><Button className={`w-100 ${activetab===3 ? 'active' : ''}`}onClick={()=>isopensubmenu(3)}>
                     <span className="icon"><FaRuler/></span>
                     Machine
                     <span className="arrow"><IoIosArrowForward/></span>
                     </Button>
-                    <ul className={`submenuwrapper${map2.get(3) ? 'colapse':'colapsed'}`}>
-                        <li><Link to=''>New Job</Link></li>
-                        <li><Link to=''>Open Job</Link></li>
-                        <li><Link to=''>Open Recent Job</Link></li>
-                        <li><Link to=''>Save Job</Link></li>
-                        <li><Link to=''>Save Job as</Link></li>
-                        <li><Link to=''>Save Configuration</Link></li>
-                        <li><Link to=''>Import Board</Link></li>
-                        <li><Link to=''>Exit</Link></li>
-                    </ul>
                     </li><li><Button className={`w-100 ${activetab===4 ? 'active' : ''}`}onClick={()=>isopensubmenu(4)}>
                     <span className="icon"><FaRegWindowRestore/></span>
                     Window
                     <span className="arrow"><IoIosArrowForward/></span>
                     </Button>
-                    <ul className={`submenuwrapper${map2.get(4) ? 'colapse':'colapsed'}`}>
-                        <li><Link to=''>New Job</Link></li>
-                        <li><Link to=''>Open Job</Link></li>
-                        <li><Link to=''>Open Recent Job</Link></li>
-                        <li><Link to=''>Save Job</Link></li>
-                        <li><Link to=''>Save Job as</Link></li>
-                        <li><Link to=''>Save Configuration</Link></li>
-                        <li><Link to=''>Import Board</Link></li>
-                        <li><Link to=''>Exit</Link></li>
-                    </ul>
                     </li><li><Button className={`w-100 ${activetab===5 ? 'active' : ''}`}onClick={()=>isopensubmenu(5)}>
                     <span className="icon"><IoIosHelpCircle/></span>
                     Help

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import logo from '../../data/bitmap.png'
+import logo from '../../data/Logo/bitmap.png'
 import { Button } from "@mui/material";
-import { MdMenuOpen } from "react-icons/md";
+import { MdMenuOpen, MdOutlineMenu } from "react-icons/md";
+import { useContext } from "react";
+import { mycontext } from "../../App";
 
 
 const Header = ()=> {
+    const context=useContext(mycontext);
     return (
         <>
         <header className="d-flex align-items-center">
@@ -18,7 +21,11 @@ const Header = ()=> {
             </div>
 
             <div className="col-sm-4 d-flex align-items-center part 2">
-                <Button><MdMenuOpen/></Button>
+                <Button onClick={()=>context.setistogglesidebar(!context.istogglesidebar)}>
+                    {
+                        context.istogglesidebar===false ? <MdMenuOpen/> : <MdOutlineMenu/>
+                    }
+                    </Button>
             </div>
             </header>
         </>
