@@ -37,10 +37,8 @@ const Sidebar = ()=> {
 
     const isopensubmenu=(index)=>{
         setactivetab(index);
-        console.log(activetab);
         map1=updateMap(map,index,!map1.get(index));
         setmap2(map1);
-        console.log(map1);
 
     }
     return (

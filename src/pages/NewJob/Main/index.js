@@ -9,7 +9,7 @@ import Tabs from '../Tabs';
 const App = () => {
   return (
     <div className="App">
-      <div className="content">
+      <div className="content1">
         <div className="left-panel">
           <Camera/>
           <MachineControls/>
@@ -26,3 +26,5 @@ const App = () => {
 };
 
 export default App;
+
+

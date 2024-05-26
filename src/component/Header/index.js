@@ -8,6 +8,10 @@ import { mycontext } from "../../App";
 
 const Header = ()=> {
     const context=useContext(mycontext);
+    const dosomething=()=>{
+        context.setistogglesidebar(false);
+        console.log(context.istogglesidebar);
+    }
     return (
         <>
         <header className="d-flex align-items-center">
@@ -15,7 +19,7 @@ const Header = ()=> {
                 {}
                 <div className="col-sm-4 part1">
                     <Link to ={'/'}  className="d-flex align-items-center logo">
-                        <img src={logo} width= {200} height={75}/>
+                        <img src={logo} width= {200} height={75} onClick={()=>dosomething()}/>
                     </Link>
                 </div>
             </div>
