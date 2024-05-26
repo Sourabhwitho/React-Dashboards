@@ -61,9 +61,10 @@ header  .row{margin: 0px !important;}
   cursor: pointer;
 }
 
-.content {
+.content1 {
   display: flex;
   flex-grow: 1;
+  margin-top: 70px;
 }
 
 .left-panel {
@@ -111,6 +112,9 @@ header  .row{margin: 0px !important;}
   text-align: center;
 }
 
+.machine-controls.hide {
+  display: none;
+}
 
 .machine-controls .control-section {
   margin-top: 20px;

@@ -20,7 +20,6 @@ function App() {
     <BrowserRouter>
     <mycontext.Provider value={values}>
     <Header/>
-    <Routes><Route path ="/new-job" exact={true} element ={<Main/>}/></Routes>
     <div className='main d-flex'>
       <div className={`sidebarWrapper ${istogglesidebar ? 'toggle': ''}`}>
         <Sidebar/>
@@ -29,6 +28,7 @@ function App() {
         <Routes>
             <Route path ="/" exact={true} element = {<Dashboard/>}/>
             <Route path ="/dashboard" exact={true} element ={<Dashboard/>}/>
+            <Route path ="/new-job" exact={true} element ={<Main/>}/>
         </Routes>
     </div>
     </div>

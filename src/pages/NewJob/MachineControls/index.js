@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 
 const MachineControls = () => {
   const [activejob,setactivejob]=useState(0);
+  const [hidecontrol, sethidecontrol]=useState(false);
   const dosomething = (index)=>{
     setactivejob(index);
+  }
+  const hidesomething= ()=>{
+    sethidecontrol(!hidecontrol);
   }
   return (
     <div className="machine-control">
     <div className="controls">
-      <div className="machine-controls">
+      <div className={`machine-controls ${hidecontrol ? 'hide': ''}`}>
         <h2>Machine Controls</h2>
-        <button>-</button>
+        <button onClick={()=>hidesomething()}>-</button>
         <select>
           <option>Nozzle: N1-NT1 (Head: H1)</option>
           <option>Camera: Top (Head: H1)</option>
