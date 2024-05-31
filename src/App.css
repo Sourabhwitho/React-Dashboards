@@ -27,7 +27,6 @@ header  .row{margin: 0px !important;}
 .main .sidebarWrapper .sidebar ul .submenu li{width: 100%; list-style: none;}
 .main .sidebarWrapper .sidebar ul .submenu li a{color: #000 !important;text-decoration: none;padding: 5px 0px; font-size: 14px; font-weight: 500;transition: 0.3s;}
 .main .sidebarWrapper .sidebar ul .submenu li a:hover{color: #f1f1f1 !important;}
-/* .main .sidebarWrapper .sidebar ul  .submenuwrapper{transition: all 0.3s;height: 0px; overflow: hidden;} */
 .main .sidebarWrapper .sidebar ul  .submenuwrappercolapsed{opacity: 0; height: 0px; overflow: hidden;}
 .main .sidebarWrapper .sidebar ul  .submenuwrappercolapse{height: auto; overflow: inherit;}
 .main .sidebarWrapper .sidebar ul  .submenuwrappercolapse .submenu{opacity: 1;}
@@ -61,7 +60,7 @@ header  .row{margin: 0px !important;}
   cursor: pointer;
 }
 
-.content1 {
+.content1 { 
   display: flex;
   flex-grow: 1;
   margin-top: 70px;
@@ -116,6 +115,10 @@ header  .row{margin: 0px !important;}
   display: none;
 }
 
+.unhide.not{
+  display: none;
+}
+
 .machine-controls .control-section {
   margin-top: 20px;
 }
@@ -128,11 +131,8 @@ header  .row{margin: 0px !important;}
   display: none;
 }
 
-.board-controls {
-  display: flex;
-}
 .board-controls.hide {
-  display: none;
+    display: none;
 }
 
 .xy-controls {
@@ -166,6 +166,11 @@ header  .row{margin: 0px !important;}
   flex-direction: column;
 }
 
+.main-content {
+  /* display: flex; */
+  flex: 1;
+}
+
 .tabs {
   display: flex;
   border-bottom: 1px solid #ccc;
@@ -179,6 +184,7 @@ header  .row{margin: 0px !important;}
 
 .board-controls, .placement-controls {
   flex: 1;
+  padding-bottom: 132px;
   display: flex;
   flex-direction: column;
 }
@@ -187,6 +193,14 @@ header  .row{margin: 0px !important;}
   background-color: #f0f0f0;
   padding: 5px;
   text-align: center;
+}
+
+.placement-controls.hide{
+  display: none;
+}
+
+.better-classes.hide{
+  display: none;
 }
 
 .placements table, .placements th, .placements td {
@@ -203,4 +217,23 @@ header  .row{margin: 0px !important;}
   justify-content: space-between;
   padding: 10px;
   background: #f0f0f0;
+}
+
+.machinesetup {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.tree-node {
+  margin-left: 20px;
+}
+
+.node-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.expand-icon {
+  margin-right: 5px;
 }

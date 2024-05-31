@@ -73,6 +73,9 @@ const MachineControls = () => {
           </div>
         </div>
       </div>
+      <div className={`unhide ${!hidecontrol ? 'not': ''}`}>
+      <button onClick={()=>hidesomething()}>+</button>
+      </div>
     </div>
 
 
