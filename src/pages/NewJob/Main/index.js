@@ -1,9 +1,7 @@
 import React from 'react';
 import Camera from '../camera';
 import MachineControls from '../MachineControls';
-import BoardList from '../BoardList';
 import Footer from '../Footer';
-import PlacementControl from '../Placementcontrols';
 import Tabs from '../Tabs';
 
 const App = () => {
@@ -15,9 +13,9 @@ const App = () => {
           <MachineControls/>
         </div>
         <div className="right-panel">
+          <main className='main-content'>
           <Tabs/>
-          <BoardList/>
-          <PlacementControl/>
+          </main>
         <Footer/>
         </div>
       </div>
