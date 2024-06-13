@@ -45,9 +45,12 @@ const Sidebar = ()=> {
         <>
             <div className="sidebar">
             <ul>
-            <li><Button className={`w-100 ${activetab===0 ? 'active' : ''}`}onClick={()=>isopensubmenu(0)}>
-                    Dashboard
-                    </Button>
+            <li>
+                <Link to= {'/'}>
+                    <Button className={`w-100 ${activetab===0 ? 'active' : ''}`}onClick={()=>isopensubmenu(0)}>
+                        Dashboard
+                </Button>
+                </Link>
                     </li>
                 <li><Button  className={`w-100 ${activetab===1 ? 'active' : ''}`}onClick={()=>isopensubmenu(1)}>
                     <span className="icon"><FaFileAlt/></span>
