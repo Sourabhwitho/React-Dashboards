@@ -184,9 +184,32 @@ header  .row{margin: 0px !important;}
   border-right: 1px solid #ccc;
 }
 
+.placements table, .placements th, .placements td {
+  border: 1px solid #000;
+}
+
+.placements th, .placements td {
+  padding: 5px;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
 .board-controls, .placement-controls {
   flex: 1;
-  padding-bottom: 132px;
+  padding-bottom: 200px;
   display: flex;
   flex-direction: column;
 }
