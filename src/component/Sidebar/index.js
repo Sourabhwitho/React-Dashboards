@@ -8,6 +8,7 @@ import { IoIosHelpCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { mycontext } from "../../App";
+import { GoHome } from "react-icons/go";
 
 var map1 = new Map([[1,false],[2,false],[3,false],[4,false],[5,false],[0,false]]);
 var map = new Map([[1,false],[2,false],[3,false],[4,false],[5,false],[0,false]]);
@@ -48,6 +49,7 @@ const Sidebar = ()=> {
             <li>
                 <Link to= {'/'}>
                     <Button className={`w-100 ${activetab===0 ? 'active' : ''}`}onClick={()=>isopensubmenu(0)}>
+                    <span className="icon"><GoHome /></span>
                         Dashboard
                 </Button>
                 </Link>

@@ -13,15 +13,15 @@ header  .row{margin: 0px !important;}
 
 .main .sidebarWrapper{ width: 15%; flex: 0 0 15%; transition: all 0.3s ease-in-out;}
 .main .sidebarWrapper.toggle{ width: 0%; flex: 0 0 0%;}
-.main .sidebarWrapper .sidebar{width: 15%; height: 100vh; position: fixed; top: 70px; left: 0px; background: #527aa5; transition: all 0.3s ease-in-out;}
+.main .sidebarWrapper .sidebar{width: 15%; height: 100vh; position: fixed; top: 70px; left: 0px; background: #1c2631; transition: all 0.3s ease-in-out;}
 .main .sidebarWrapper.toggle .sidebar{left: -100%;}
 
 .main .sidebarWrapper .sidebar ul {list-style: none;}
 .main .sidebarWrapper  .sidebar ul{margin-bottom: 0px;}
 .main .sidebarWrapper .sidebar ul li button{color: #f1f1f1; text-align: left; justify-content: left;border-radius: 0px !important; padding: 12px 15px !important ; align-items: center; text-transform: capitalize !important; font-weight: 600 !important; font-family: "Open Sans", sans-serif !important;}
 .main .sidebarWrapper .sidebar ul li button .icon{ display: flex; align-items: center; justify-content: center; width: 25px; height: 25px; margin-right: 10px; align-items: center;}
-.main .sidebarWrapper .sidebar ul li button .icon svg {color: #000; opacity: 0.8; font-size: 22px;}
-.main .sidebarWrapper .sidebar ul li button .arrow{color: #000; margin-left: auto ; display: flex; align-items: center; justify-content: center; width: 25px; height: 25px;}
+.main .sidebarWrapper .sidebar ul li button .icon svg {color: #f1f1f1; opacity: 0.8; font-size: 22px;}
+.main .sidebarWrapper .sidebar ul li button .arrow{color: #f1f1f1; margin-left: auto ; display: flex; align-items: center; justify-content: center; width: 25px; height: 25px;}
 .main .sidebarWrapper .sidebar ul li button:hover{background: #1c2631 !important;}
 .main .sidebarWrapper .sidebar ul li button.active{background: #f2f10d10 !important;}
 .main .sidebarWrapper .sidebar ul .submenu{padding: 0px 45px;}
