@@ -3,12 +3,23 @@ import { useState,useCallback } from 'react';
 import React, { useRef, useEffect } from 'react';
 
 const useCamera = () => {
+  const [devices, setDevices] = useState([]);
   const [stream, setStream] = useState(null);
   const [error, setError] = useState(null);
 
-  const startCamera = useCallback(async () => {
+  const listCameras = useCallback(async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const videoDevices = devices.filter(device => device.kind === 'videoinput');
+      setDevices(videoDevices);
+    } catch (err) {
+      setError(err);
+    }
+  }, []);
+
+  const startCamera = useCallback(async (deviceId) => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { deviceId } });
       setStream(stream);
       setError(null);
     } catch (err) {
@@ -24,20 +35,22 @@ const useCamera = () => {
   }, [stream]);
 
   useEffect(() => {
+    listCameras();
     return () => {
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
       }
     };
-  }, [stream]);
+  }, [listCameras, stream]);
 
-  return { stream, error, startCamera, stopCamera };
+  return { devices, stream, error, startCamera, stopCamera };
 };
 
 const Camera = () => {
-  const { stream, error, startCamera, stopCamera } = useCamera();
+  const { devices, stream, error, startCamera, stopCamera } = useCamera();
   const videoRef = useRef(null);
   const [isCameraOn, setIsCameraOn] = useState(false);
+  const [selectedDeviceId, setSelectedDeviceId] = useState('');
 
   useEffect(() => {
     if (videoRef.current && stream) {
@@ -45,11 +58,15 @@ const Camera = () => {
     }
   }, [stream]);
 
-  const toggleCamera = () => {
+  const handleDeviceChange = (event) => {
+    setSelectedDeviceId(event.target.value);
+  };
+
+  const toggleCamera = async () => {
     if (isCameraOn) {
       stopCamera();
     } else {
-      startCamera();
+      await startCamera(selectedDeviceId);
     }
     setIsCameraOn(prevState => !prevState);
   };
@@ -57,17 +74,20 @@ const Camera = () => {
   return (
     <div className="camera-view">
       <div className="camera-header">Camera</div>
-      <select>
-        <option>Show None</option>
-        <option>Camera: Top (Head: H1)</option>
-        <option>Camera: Bottom</option>
+      <select onChange={handleDeviceChange} value={selectedDeviceId}>
+        <option value="">Select Camera</option>
+        {devices.map(device => (
+          <option key={device.deviceId} value={device.deviceId}>
+            {device.label || `Camera ${device.deviceId}`}
+          </option>
+        ))}
       </select>
       <div className="camera-content">
         <div className="fiducial" id="fid1">FID1</div>
         {error && <div className="error">Error accessing camera: {error.message}</div>}
         <video ref={videoRef} autoPlay className="camera-video"></video>
       </div>
-      <button onClick={toggleCamera}>
+      <button onClick={toggleCamera} disabled={!selectedDeviceId}>
         {isCameraOn ? 'Stop Camera' : 'Start Camera'}
       </button>
     </div>
