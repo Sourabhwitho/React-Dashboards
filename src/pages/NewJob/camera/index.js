@@ -49,8 +49,7 @@ const useCamera = () => {
 const Camera = () => {
   const { devices, stream, error, startCamera, stopCamera } = useCamera();
   const videoRef = useRef(null);
-  const [isCameraOn, setIsCameraOn] = useState(false);
-  const [selectedDeviceId, setSelectedDeviceId] = useState('');
+  const [selectedDeviceId, setSelectedDeviceId] = useState(''); // Default to Show None
 
   useEffect(() => {
     if (videoRef.current && stream) {
@@ -58,24 +57,22 @@ const Camera = () => {
     }
   }, [stream]);
 
-  const handleDeviceChange = (event) => {
-    setSelectedDeviceId(event.target.value);
-  };
-
-  const toggleCamera = async () => {
-    if (isCameraOn) {
-      stopCamera();
+  const handleDeviceChange = async (event) => {
+    const deviceId = event.target.value;
+    setSelectedDeviceId(deviceId);
+    
+    if (deviceId) {
+      await startCamera(deviceId);
     } else {
-      await startCamera(selectedDeviceId);
+      stopCamera();
     }
-    setIsCameraOn(prevState => !prevState);
   };
 
   return (
     <div className="camera-view">
       <div className="camera-header">Camera</div>
       <select onChange={handleDeviceChange} value={selectedDeviceId}>
-        <option value="">Select Camera</option>
+        <option value="">Show None</option>
         {devices.map(device => (
           <option key={device.deviceId} value={device.deviceId}>
             {device.label || `Camera ${device.deviceId}`}
@@ -83,13 +80,11 @@ const Camera = () => {
         ))}
       </select>
       <div className="camera-content">
-        <div className="fiducial" id="fid1">FID1</div>
+      {!selectedDeviceId && <div className="fiducial" id="fid1">FID1</div>}
         {error && <div className="error">Error accessing camera: {error.message}</div>}
         <video ref={videoRef} autoPlay className="camera-video"></video>
+        {selectedDeviceId && <div className="grid-overlay"></div>}
       </div>
-      <button onClick={toggleCamera} disabled={!selectedDeviceId}>
-        {isCameraOn ? 'Stop Camera' : 'Start Camera'}
-      </button>
     </div>
   );
 };
