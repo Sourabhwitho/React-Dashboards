@@ -22,7 +22,6 @@ const Tabs = () => {
   </div>
     <div className={`better-classes ${activejob===0 ? '': 'hide'}`}>
     <BoardList/>
-    {/* <PlacementControl/> */}
   </div>
   <div className={`better-classes ${activejob===1 ? '': 'hide'}`}>
     Parts

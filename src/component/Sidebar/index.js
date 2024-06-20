@@ -71,7 +71,7 @@ const Sidebar = ()=> {
                         Import Board
                         </Button>
                         <ul className={`subsubmenuwrapper${activesubtab===1 && toggle ? 'colapse':'colapsed'}`}>
-                        <li><Link to=''>Labcenter Proteus.pkb</Link></li>
+                        <li><Button>Labcenter Proteus.pkb</Button></li>
                         <li><Link to=''>cadSoft EagleBoard</Link></li>
                         <li><Link to=''>Eaglemountsmd.ump</Link></li>
                         <li><Link to=''>Kicad.pos</Link></li>
